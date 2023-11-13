@@ -16,7 +16,6 @@ export default function TaskHookForm({ kisiler, submitFn }) {
   } = useForm({ defaultValues: { ...emptyData }, mode: "onBlur" });
 
   const onSubmit = (formData) => {
-    console.log("formData > ", formData);
     submitFn({
       ...formData,
       id: nanoid(5),
@@ -32,7 +31,7 @@ export default function TaskHookForm({ kisiler, submitFn }) {
           <input
             className="input-text"
             type="text"
-            {...register("name", {
+            {...register("title", {
               required: "Başlık alanı boş bırakılamaz!",
               minLength: {
                 value: 3,
@@ -71,7 +70,9 @@ export default function TaskHookForm({ kisiler, submitFn }) {
                 type="checkbox"
                 name="people"
                 value={p}
-                {...register("people")}
+                {...register("people", {
+                  required: "En az bir kişi seçin!",
+                })}
               />
               {p}
               <div className="validation-error">{errors?.people?.message}</div>
