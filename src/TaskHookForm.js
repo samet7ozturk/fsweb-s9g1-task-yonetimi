@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { nanoid } from "nanoid";
 
-export default function TaskHookForm({ kisiler }) {
+export default function TaskHookForm({ kisiler, submitFn }) {
   const emptyData = {
     name: "",
     description: "",
@@ -16,6 +17,11 @@ export default function TaskHookForm({ kisiler }) {
 
   const onSubmit = (formData) => {
     console.log("formData > ", formData);
+    submitFn({
+      ...formData,
+      id: nanoid(5),
+      status: "yapılacak",
+    });
   };
 
   return (
