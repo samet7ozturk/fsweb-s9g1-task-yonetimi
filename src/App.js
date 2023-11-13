@@ -15,18 +15,12 @@ function App() {
   function handleTaskSubmit(yeniTask) {
     setTasks([yeniTask, ...tasks]);
     console.log(yeniTask);
-    toast.success(
-      "Yeni Görev : " +
-        "'" +
-        yeniTask.title +
-        "'" +
-        " başarılı bir şekilde eklendi"
-    );
+    toast.success(yeniTask.title + " adlı görev listeye eklendi.");
   }
 
   function handlePeopleSubmit(yeniKisi) {
     setTeam([...team, yeniKisi]);
-    toast.success(yeniKisi + ", ekibe katıldı.");
+    toast.success(yeniKisi + ", kişilere eklendi.");
   }
 
   function handleComplete(id) {
@@ -39,7 +33,7 @@ function App() {
       }
     });
     setTasks(copyTasks);
-    toast.success("Tebrikler!, " + title + " görevini tamamladın");
+    toast.success(title + " adlı görev tamamlandı!");
   }
 
   return (
